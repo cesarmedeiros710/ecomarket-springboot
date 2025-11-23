@@ -4,6 +4,8 @@ import com.marketservices.model.Agendamento;
 import com.marketservices.service.AgendamentoService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/agendamentos")
 public class AgendamentoController {
@@ -14,12 +16,13 @@ public class AgendamentoController {
         this.service = service;
     }
 
-    @PostMapping("/{prestadorId}/{servicoId}")
-    public Agendamento criar(
-            @PathVariable Long prestadorId,
-            @PathVariable Long servicoId,
-            @RequestBody Agendamento dados) {
+    @GetMapping
+    public List<Agendamento> listar() {
+        return service.findAll();
+    }
 
-        return service.agendar(prestadorId, servicoId, dados);
+    @PostMapping
+    public Agendamento salvar(@RequestBody Agendamento agendamento) {
+        return service.save(agendamento);
     }
 }

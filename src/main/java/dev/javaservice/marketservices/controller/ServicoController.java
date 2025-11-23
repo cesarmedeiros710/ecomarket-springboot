@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/servicos")
 public class ServicoController {
 
-    private final ServicoService service;
+    private final ServicoService servicoService;
 
-    public ServicoController(ServicoService service) {
-        this.service = service;
-    }
-
-    @PostMapping
-    public Servico criar(@RequestBody Servico servico) {
-        return service.salvar(servico);
+    public ServicoController(ServicoService servicoService) {
+        this.servicoService = servicoService;
     }
 
     @GetMapping
     public List<Servico> listar() {
-        return service.listar();
+        return servicoService.findAll();
+    }
+
+    @PostMapping
+    public Servico salvar(@RequestBody Servico servico) {
+        return servicoService.save(servico);
     }
 }

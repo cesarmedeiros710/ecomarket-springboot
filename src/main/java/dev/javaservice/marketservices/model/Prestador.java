@@ -1,25 +1,28 @@
-package dev.javaservice.marketservices.model;
+package com.marketservices.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Prestador {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
-    private String documento;
     private String telefone;
-    private String email;
+    private String servico;
 
     public Prestador() {}
 
-    public Prestador(String email, String telefone, String documento, String nome, Long id) {
-        this.email = email;
-        this.telefone = telefone;
-        this.documento = documento;
-        this.nome = nome;
+    public Prestador(Long id, String nome, String telefone, String servico) {
         this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.servico = servico;
     }
 
     public Long getId() {
@@ -30,20 +33,12 @@ public class Prestador {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getServico() {
+        return servico;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 
     public String getTelefone() {
@@ -54,11 +49,11 @@ public class Prestador {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNome() {
+        return nome;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

@@ -1,33 +1,24 @@
 package com.marketservices.service;
 
-import com.marketservices.repository.PrestadorRepository;
-import com.marketservices.model.Prestador;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import com.marketservices.model.Prestador;
+import com.marketservices.repository.PrestadorRepository;
 
 @Service
 public class PrestadorService {
 
-    private final PrestadorRepository repository;
+    private final PrestadorRepository prestadorRepository;
 
-    public PrestadorService(PrestadorRepository repository) {
-        this.repository = repository;
+    public PrestadorService(PrestadorRepository prestadorRepository) {
+        this.prestadorRepository = prestadorRepository;
     }
 
-    public Prestador salvar(Prestador p) {
-        return repository.save(p);
+    public List<Prestador> findAll() {
+        return prestadorRepository.findAll();
     }
 
-    public List<Prestador> listar() {
-        return repository.findAll();
-    }
-
-    public Prestador buscar(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public void excluir(Long id) {
-        repository.deleteById(id);
+    public Prestador save(Prestador prestador) {
+        return prestadorRepository.save(prestador);
     }
 }

@@ -7,32 +7,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/prestadores")
 public class PrestadorController {
 
-    private final PrestadorService service;
+    private final PrestadorService prestadorService;
 
-    public PrestadorController(PrestadorService service) {
-        this.service = service;
-    }
-
-    @PostMapping
-    public Prestador criar(@RequestBody Prestador p) {
-        return service.salvar(p);
+    public PrestadorController(PrestadorService prestadorService) {
+        this.prestadorService = prestadorService;
     }
 
     @GetMapping
     public List<Prestador> listar() {
-        return service.listar();
+        return prestadorService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Prestador buscar(@PathVariable Long id) {
-        return service.buscar(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        service.excluir(id);
+    @PostMapping
+    public Prestador salvar(@RequestBody Prestador prestador) {
+        return prestadorService.save(prestador);
     }
 }

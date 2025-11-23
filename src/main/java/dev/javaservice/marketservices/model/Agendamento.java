@@ -20,18 +20,11 @@ public class Agendamento {
 
     public Agendamento() {}
 
-    public Agendamento(Prestador prestador, Servico servico, LocalDateTime dataHora) {
+    public Agendamento(Long id, Prestador prestador, Servico servico, LocalDateTime dataHora) {
+        this.id = id;
         this.prestador = prestador;
         this.servico = servico;
         this.dataHora = dataHora;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalDateTime getDataHora() {
@@ -56,5 +49,13 @@ public class Agendamento {
 
     public void setPrestador(Prestador prestador) {
         this.prestador = prestador;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

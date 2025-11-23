@@ -9,14 +9,19 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private String funcao;
     private String descricao;
+    private String nome;
+    private Double preco;
 
     public Servico() {}
 
-    public Servico(String nome, String descricao) {
-        this.nome = nome;
+    public Servico(Long id, String funcao, String descricao, String nome, Double preco) {
+        this.id = id;
+        this.funcao = funcao;
         this.descricao = descricao;
+        this.nome = nome;
+        this.preco = preco;
     }
 
     public Long getId() {
@@ -27,12 +32,12 @@ public class Servico {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 
     public String getNome() {
@@ -42,4 +47,21 @@ public class Servico {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
 }
+

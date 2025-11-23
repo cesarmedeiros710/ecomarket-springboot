@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public class ServicoService {
 
-    private final ServicoRepository repository;
+    private final ServicoRepository servicoRepository;
 
-    public ServicoService(ServicoRepository repository) {
-        this.repository = repository;
+    public ServicoService(ServicoRepository servicoRepository) {
+        this.servicoRepository = servicoRepository;
     }
 
-    public Servico salvar(Servico s) {
-        return repository.save(s);
+    public List<Servico> findAll() {
+        return servicoRepository.findAll();
     }
 
-    public List<Servico> listar() {
-        return repository.findAll();
+    public Servico save(Servico servico) {
+        return servicoRepository.save(servico);
     }
 }
