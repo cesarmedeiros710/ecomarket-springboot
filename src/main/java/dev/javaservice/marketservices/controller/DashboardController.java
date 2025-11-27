@@ -1,4 +1,4 @@
-package dev.javaservice.marketservices.controller;
+package com.marketservices.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
