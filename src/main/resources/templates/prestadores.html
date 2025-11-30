@@ -1,0 +1,45 @@
+<div th:fragment="content">
+
+    <div class="page-header">
+        <h2 class="page-title">Prestadores Cadastrados</h2>
+    </div>
+
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-vcenter card-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Serviço</th>
+                    <th>Em Serviço?</th>
+                    <th class="w-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${listaPrestadores}">
+                    <td th:text="${p.id}">1</td>
+                    <td th:text="${p.nome}">Nome</td>
+                    <td th:text="${p.telefone}">0000-0000</td>
+                    <td th:text="${p.servico}">Serviço</td>
+
+                    <td>
+                        <span th:if="${p.emServico}" class="status status-green">Sim</span>
+                        <span th:if="${!p.emServico}" class="status status-red">Não</span>
+                    </td>
+
+                    <td class="text-end">
+                        <a th:href="@{'/prestadores/deletar/' + ${p.id}}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Deseja excluir este prestador?');">
+                            <i class="ti ti-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
